@@ -1,19 +1,27 @@
 <!-- ./src/pages/Cart.vue -->
 <template>
-  <div class="container">
+  <div v-if="cart.length > 0">
     <div class="title">
-      <h1>{{msg}}</h1>
+      <h1><i class="fa fa-superpowers"></i> Your Cart</h1>
     </div>
+    <template v-for="product in cart">
+      <product-details :product="product" :key="product.id" ></product-details>
+    </template>
   </div>
-</template>v
+  <div v-else class="title"><h1><i class="fa fa-superpowers"></i> Your Cart is Empty</h1></div>
+</template>
 
 <script>
+import ProductDetails from '../components/products/ProductDetails';
+
 export default {
-  name: 'home',
   data() {
     return {
-      msg: 'Welcome to the Cart page',
+      cart: this.$store.state.cart,
     };
+  },
+  components: {
+    productDetails: ProductDetails,
   },
 };
 </script>

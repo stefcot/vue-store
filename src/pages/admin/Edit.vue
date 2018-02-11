@@ -1,16 +1,43 @@
 <!-- ./src/pages/admin/Edit.vue -->
 <template>
-  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-    <div class="title">
-      <h1>This is Admin/Edit/{{$route.params.id}}</h1>
-    </div>
-  </div>
+  <product-form
+    @save-product="updateProduct"
+    :model="model"
+    :manufacturers="manufacturers"
+    :isEditing="true" ></product-form>
 </template>
 
 <script>
+import ProductFrom from '../../components/products/ProductForm';
+
 export default {
   created() {
-    // console.log(this.$route.params.id); // prints the value of id
+    if (!this.model.name) {
+      /* eslint-disable no-console  */
+      console.log('dispatched');
+      this.$store.dispatch('productById', this.$route.params.id);
+    }
+    if (this.manufacturers.length === 0) {
+      this.$store.dispatch('allManufacturers');
+    }
+  },
+  computed: {
+    manufacturers() {
+      return this.$store.getters.allManufacturers;
+    },
+    model() {
+      const productById = this.$store.getters.productById(this.$route.params.id);
+      return Object.assign({}, productById);
+    },
+  },
+  methods: {
+    updateProduct(model) {
+      console.log('model', model);
+      this.$store.dispatch('updateProduct', model);
+    },
+  },
+  components: {
+    'product-form': ProductFrom,
   },
 };
 </script>

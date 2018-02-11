@@ -7,6 +7,7 @@ import New from '@/pages/admin/New';
 import Products from '@/pages/admin/Products';
 import Edit from '@/pages/admin/Edit';
 import Cart from '@/pages/Cart';
+import Details from '@/pages/Details';
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart,
+    },
+    {
+      path: '/details/:id',
+      name: 'Details',
+      component: Details,
     },
   ],
 });

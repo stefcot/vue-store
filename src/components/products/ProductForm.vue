@@ -8,7 +8,8 @@
           <input type="text"
                  placeholder="Name"
                  class="form-control"
-                 v-model="model.name" />
+                 v-model="model.name"
+                 name="name" />
         </div>
         <div class="form-group">
           <label>Price</label>

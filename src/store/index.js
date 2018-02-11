@@ -8,6 +8,9 @@ import { productGetters, manufacturerGetters } from './getters';
 // import mutations
 import { productMutations, cartMutations, manufacturerMutations } from './mutations';
 
+// import actions
+import { productActions, manufacturerActions } from './actions';
+
 // Just like every other plugin, you need to configure Vue with Vuex
 Vue.use(Vuex);
 
@@ -30,4 +33,6 @@ export default new Vuex.Store({
   getters: Object.assign({}, productGetters, manufacturerGetters),
   // MUTATIONS MEMBERS
   mutations: Object.assign({}, productMutations, cartMutations, manufacturerMutations),
+  // ACTIONS MEMBERS
+  actions: Object.assign({}, productActions, manufacturerActions),
 });

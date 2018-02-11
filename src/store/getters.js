@@ -6,7 +6,7 @@ export const productGetters = {
   allProducts: state => state.products,
   // Get product by ID
   // maybe some kind of curried function , basically returning a function itself returning the proper product
-  productId: (state, getters) => (id) => {
+  productById: (state, getters) => (id) => {
     if (getters.allProducts.length > 0) {
       /* eslint-disable no-underscore-dangle */
       return getters.allProducts.filter(p => p._id === id)[0];

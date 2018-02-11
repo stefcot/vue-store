@@ -20,4 +20,18 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
+  watch: {
+    $route(to) {
+      if (to.name === 'Products') {
+        this.allProducts();
+      }
+    },
+  },
+  methods: {
+    allProducts() {
+      /* eslint-disable no-console */
+      console.log('allProducts');
+      this.$store.dispatch('allProducts');
+    },
+  },
 });

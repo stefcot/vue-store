@@ -10,22 +10,21 @@ export default {
   data() {
     return {
       model: {},
-      manufacturers: [
-        {
-          _id: 'sam',
-          name: 'Samsung',
-        },
-        {
-          _id: 'apple',
-          name: 'Apple',
-        },
-      ],
     };
+  },
+  created() {
+    if (this.manufacturers.length === 0) {
+      this.$store.dispatch('allManufacturers');
+    }
   },
   methods: {
     addProduct(model) {
-      // eslint-disable-next-line
-      console.log('model : ', model);
+      this.$store.dispatch('addProduct', model);
+    },
+  },
+  computed: {
+    manufacturers() {
+      return this.$store.getters.allManufacturers;
     },
   },
   components: {
